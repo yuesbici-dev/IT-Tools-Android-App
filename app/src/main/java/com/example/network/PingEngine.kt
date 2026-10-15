@@ -11,6 +11,7 @@ import java.io.InputStreamReader
 import java.net.InetAddress
 import java.net.InetSocketAddress
 import java.net.Socket
+import java.util.Locale
 import kotlin.math.abs
 import kotlin.math.roundToInt
 
@@ -101,7 +102,7 @@ class PingEngine {
                     rttMs = rtt,
                     ttl = ttl,
                     isSuccess = true,
-                    message = "$bytes bytes from $resolvedIp: icmp_seq=$seq ttl=$ttl time=${String.format("%.2f", rtt)} ms"
+                    message = "$bytes bytes from $resolvedIp: icmp_seq=$seq ttl=$ttl time=${String.format(Locale.US, "%.2f", rtt)} ms"
                 )
             }
         } catch (_: Exception) {
@@ -123,7 +124,7 @@ class PingEngine {
                 rttMs = elapsedMs,
                 ttl = 64,
                 isSuccess = true,
-                message = "TCP probe to $resolvedIp: seq=$seq time=${String.format("%.2f", elapsedMs)} ms"
+                message = "TCP probe to $resolvedIp: seq=$seq time=${String.format(Locale.US, "%.2f", elapsedMs)} ms"
             )
         } catch (_: Exception) {
             // Try isReachable fallback
@@ -139,7 +140,7 @@ class PingEngine {
                         rttMs = elapsed,
                         ttl = 64,
                         isSuccess = true,
-                        message = "Reachable: $resolvedIp: seq=$seq time=${String.format("%.2f", elapsed)} ms"
+                        message = "Reachable: $resolvedIp: seq=$seq time=${String.format(Locale.US, "%.2f", elapsed)} ms"
                     )
                 } else {
                     PingPacket(

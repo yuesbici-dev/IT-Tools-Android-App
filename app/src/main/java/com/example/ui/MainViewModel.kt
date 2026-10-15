@@ -3,6 +3,7 @@ package com.example.ui
 import android.app.Application
 import android.content.Intent
 import android.net.Uri
+import androidx.core.net.toUri
 import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
@@ -550,13 +551,13 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
                 context.startActivity(launchIntent)
             } else {
                 Toast.makeText(context, "$appName is not installed on this device.", Toast.LENGTH_SHORT).show()
-                val storeIntent = Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=$packageName")).apply {
+                val storeIntent = Intent(Intent.ACTION_VIEW, "market://details?id=$packageName".toUri()).apply {
                     addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                 }
                 try {
                     context.startActivity(storeIntent)
                 } catch (_: Exception) {
-                    val webIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=$packageName")).apply {
+                    val webIntent = Intent(Intent.ACTION_VIEW, "https://play.google.com/store/apps/details?id=$packageName".toUri()).apply {
                         addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                     }
                     context.startActivity(webIntent)
@@ -575,7 +576,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             } else {
                 urlStr
             }
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(formatted)).apply {
+            val intent = Intent(Intent.ACTION_VIEW, formatted.toUri()).apply {
                 addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             }
             context.startActivity(intent)

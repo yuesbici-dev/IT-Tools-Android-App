@@ -146,8 +146,9 @@ fun WhoisScreen(
             }
 
             // Results Card
-            if (whoisResult != null) {
-                val res = whoisResult!!
+            val currentWhois = whoisResult
+            if (currentWhois != null) {
+                val res = currentWhois
                 item {
                     Card(
                         modifier = Modifier.fillMaxWidth(),

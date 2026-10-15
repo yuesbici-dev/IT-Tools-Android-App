@@ -120,7 +120,7 @@ fun PingScreen(
                                 SavedHost(
                                     ip = targetHost.trim(),
                                     label = "Host ($targetHost)",
-                                    notes = "Ping tested. Avg RTT: ${String.format("%.1f", stats?.avgRtt ?: 0.0)} ms",
+                                    notes = "Ping tested. Avg RTT: ${String.format(Locale.US, "%.1f", stats?.avgRtt ?: 0.0)} ms",
                                     category = "General"
                                 )
                             )
@@ -327,19 +327,19 @@ fun PingScreen(
                             )
                             MetricStatCard(
                                 label = "Min",
-                                value = String.format("%.1f", stats?.minRtt ?: 0.0),
+                                value = String.format(Locale.US, "%.1f", stats?.minRtt ?: 0.0),
                                 unit = "ms",
                                 modifier = Modifier.weight(1f)
                             )
                             MetricStatCard(
                                 label = "Avg",
-                                value = String.format("%.1f", stats?.avgRtt ?: 0.0),
+                                value = String.format(Locale.US, "%.1f", stats?.avgRtt ?: 0.0),
                                 unit = "ms",
                                 modifier = Modifier.weight(1f)
                             )
                             MetricStatCard(
                                 label = "Max",
-                                value = String.format("%.1f", stats?.maxRtt ?: 0.0),
+                                value = String.format(Locale.US, "%.1f", stats?.maxRtt ?: 0.0),
                                 unit = "ms",
                                 modifier = Modifier.weight(1f)
                             )
@@ -495,7 +495,7 @@ fun PingHistoryCard(
                     if (history.avgRttMs > 0.0) {
                         Spacer(modifier = Modifier.width(6.dp))
                         Text(
-                            text = "• ${String.format("%.1f", history.avgRttMs)} ms avg",
+                            text = "• ${String.format(Locale.US, "%.1f", history.avgRttMs)} ms avg",
                             fontSize = 11.sp,
                             fontFamily = FontFamily.Monospace,
                             color = ElectricCyan
@@ -576,7 +576,7 @@ fun PingPacketRow(packet: PingPacket) {
 
             if (packet.isSuccess) {
                 Text(
-                    text = "${String.format("%.1f", packet.rttMs)} ms",
+                    text = "${String.format(Locale.US, "%.1f", packet.rttMs)} ms",
                     fontFamily = FontFamily.Monospace,
                     fontSize = 12.sp,
                     color = ElectricCyan,

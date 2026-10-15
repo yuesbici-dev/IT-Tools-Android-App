@@ -2,6 +2,7 @@ package com.example.ui.screens
 
 import android.content.Intent
 import android.net.Uri
+import androidx.core.net.toUri
 import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -95,7 +96,7 @@ fun RssReaderScreen(
 
     val openArticleInBrowser = { url: String ->
         try {
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url)).apply {
+            val intent = Intent(Intent.ACTION_VIEW, url.toUri()).apply {
                 addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             }
             context.startActivity(intent)

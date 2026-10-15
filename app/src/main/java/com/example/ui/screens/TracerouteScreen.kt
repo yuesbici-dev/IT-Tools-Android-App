@@ -43,6 +43,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import java.util.Locale
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.network.TraceHop
 import com.example.ui.MainViewModel
@@ -262,7 +263,7 @@ fun HopCard(hop: TraceHop) {
 
             if (!hop.isTimeout) {
                 Text(
-                    text = "${String.format("%.1f", hop.rttMs)} ms",
+                    text = "${String.format(Locale.US, "%.1f", hop.rttMs)} ms",
                     fontFamily = FontFamily.Monospace,
                     fontSize = 12.sp,
                     color = ElectricCyan,
