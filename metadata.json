@@ -1,0 +1,6 @@
+{
+  "name": "NetPulse",
+  "description": "An adless, modern IT Network Suite for network diagnostics, discovery, calculators, feeds, and host management.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
